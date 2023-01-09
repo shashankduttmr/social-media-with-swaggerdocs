@@ -1,0 +1,109 @@
+openapi: 3.0.0
+info:
+  title: Practice Project APis
+  description: This is just a Testing project.
+  version: 0.1.9
+  contact:
+    email: shashank@shashankdutt.in
+    url: https://shashankdutt.in
+
+servers:
+  - url: '{protocol}://localhost:7500/api/{version}'
+    description: This is a test server
+    variables:
+      version:
+        enum:
+          - v1
+          - v2
+        default: v1
+      protocol:
+        enum:
+          - https
+          - http
+        default: http
+
+paths:
+  /instagram:
+    get:
+      tags:
+        - String
+      summary: returns username or followers from Instagram APIs.
+      description: returns object in response
+      responses:
+        "200":
+          description: good requests
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+                  followers:
+                    type: string
+                  follows:
+                    type: string
+    
+
+
+  /facebook:
+    get:
+      tags:
+        - String
+      summary: returns username or followers from FaceBook APIs.
+      description: returns object in response
+      responses:
+        "200":
+          description: good request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+                  followers:
+                    type: string
+                  follows:
+                    type: string
+
+
+  /linkedin:
+    get:
+      tags:
+        - String
+      summary: returns username from linkedin
+      description: returns object in response
+      responses:
+        "200":
+          description: good request
+          content:  
+            applications/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+                  followers:
+                    type: string
+                  follows:
+                    type: string
+
+  /{token}:
+    get:
+      tags:
+        - Params
+      summary: returns data from req.params
+      description: returns strings
+      parameters:
+        - name: token
+          default: 56
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          applications/json:
+            schema:
+              type: string   
+
